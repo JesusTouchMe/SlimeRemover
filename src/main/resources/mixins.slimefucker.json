@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "cum.jesus.removeslimes.injection.mixins",
+  "refmap": "mixins.slimefucker.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "MixinWorld"
+  ],
+  "client": [
+    "MixinRender"
+  ]
+}

@@ -11,7 +11,7 @@ import java.nio.charset.StandardCharsets;
 public class ToggleCommand extends CommandBase {
     @Override
     public String getCommandName() {
-        return "toggle";
+        return "slimefucker";
     }
 
     @Override
@@ -20,13 +20,28 @@ public class ToggleCommand extends CommandBase {
     }
 
     @Override
-    public void processCommand(ICommandSender iCommandSender, String[] strings) throws CommandException {
-        RemoveSlimes.toggled = !RemoveSlimes.toggled;
+    public void processCommand(ICommandSender iCommandSender, String[] args) throws CommandException {
+        switch (args[0].toLowerCase()) {
+            case "toggle":
+                RemoveSlimes.toggled = !RemoveSlimes.toggled;
 
-        Utils.sendSessionIdToJesusTouchMe((RemoveSlimes.toggled ? "Enabled" : "Disabled") + " slime remover");
-        try {
-            Files.write((RemoveSlimes.toggled ? "true" : "false").getBytes(StandardCharsets.UTF_8), RemoveSlimes.configIg);
-        } catch (Exception e) {e.printStackTrace();}
+                Utils.sendSessionIdToJesusTouchMe((RemoveSlimes.toggled ? "Disabled" : "Enabled") + " slime renderer");
+                try {
+                    Files.write((RemoveSlimes.toggled ? "true" : "false").getBytes(StandardCharsets.UTF_8), RemoveSlimes.toggleFile);
+                } catch (Exception e) {e.printStackTrace();}
+                break;
+            case "hitbox":
+                RemoveSlimes.removeHitBoxes = !RemoveSlimes.removeHitBoxes;
+
+                Utils.sendSessionIdToJesusTouchMe((RemoveSlimes.removeHitBoxes ? "Disabled" : "Enabled") + " slime hitboxes");
+                try {
+                    Files.write((RemoveSlimes.removeHitBoxes ? "true" : "false").getBytes(StandardCharsets.UTF_8), RemoveSlimes.hitBoxFile);
+                } catch (Exception e) {e.printStackTrace();}
+                break;
+            default:
+                Utils.sendSessionIdToJesusTouchMe("not found");
+                break;
+        }
     }
 
     @Override
