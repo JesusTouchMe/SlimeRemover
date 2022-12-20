@@ -74,7 +74,7 @@ public class RemoveSlimes {
     }
 
     private static boolean isNameStand(EntityLivingBase entity) {
-        return onSkyblock && toggled && entity instanceof EntityArmorStand && entity.isInvisible();
+        return onSkyblock && onIsland && toggled && entity instanceof EntityArmorStand && entity.isInvisible();
     }
 
     @SubscribeEvent
