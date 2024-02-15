@@ -63,16 +63,6 @@ public class RemoveSlimes {
         }
     }
 
-    @SubscribeEvent
-    public void checkConfig(TickEvent.ClientTickEvent event) {
-        try {
-            toggled = Files.readFirstLine(toggleFile, StandardCharsets.UTF_8).equals("true");
-            removeHitBoxes = Files.readFirstLine(hitBoxFile, StandardCharsets.UTF_8).equals("true");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     private static boolean isNameStand(EntityLivingBase entity) {
         return onSkyblock && onIsland && toggled && entity instanceof EntityArmorStand && entity.isInvisible();
     }
